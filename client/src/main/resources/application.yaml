@@ -1,0 +1,8 @@
+logging:
+    level:
+        org:
+            apache:
+                http: DEBUG
+spring:
+  main:
+    web-environment: false
