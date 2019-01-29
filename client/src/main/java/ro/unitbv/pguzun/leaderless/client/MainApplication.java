@@ -15,27 +15,27 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableAsync
 public class MainApplication {
-	
-	public static void main(String[] args) throws Exception {
-	    ConfigurableApplicationContext context = SpringApplication.run(MainApplication.class, args);
-	    
-	    MainService mainService = context.getBean(MainService.class);
-	    final String collection = "mytable";
-	    String identifier = UUID.randomUUID().toString();
-	    
-	    Data myData = new Data(1, "{\"some field\": \"someValue\" }".getBytes("utf-8"));
-        mainService.save(collection, identifier, myData);
-	    
-	    Data data = mainService.get(collection, identifier);
-	    
-	    assert myData.getValue().equals(data.getValue());
-	}
-	
-	@Bean
+
+    public static void main(String[] args) throws Exception {
+        ConfigurableApplicationContext context = SpringApplication.run(MainApplication.class, args);
+
+        MainService mainService = context.getBean(MainService.class);
+        final String collection = "mytable";
+        String identifier = "5b252566-0493-4b85-bfb0-695b3886a07f";
+
+        Data myData = new Data("{\"some field\": \"someValue\" }".getBytes("utf-8"));
+        //mainService.save(collection, identifier, myData);
+
+        Data data = mainService.get(collection, identifier);
+
+        assert myData.getValue().equals(data.getValue());
+    }
+
+    @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
-	
+
     @Bean
     public AsyncTaskExecutor asyncTaskExecutor() {
         return new SimpleAsyncTaskExecutor();

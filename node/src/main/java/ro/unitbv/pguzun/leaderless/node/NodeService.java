@@ -19,10 +19,6 @@ public class NodeService {
             collections.put(collection, dataCollection);
         }
 
-        if (dataCollection.get(identifier) != null) {
-            throw new RuntimeException("conflict");
-        }
-
         dataCollection.put(identifier, data);
         
         System.out.println("Saved " + identifier +" with " + data);

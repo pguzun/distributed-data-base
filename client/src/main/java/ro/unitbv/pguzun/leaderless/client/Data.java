@@ -11,14 +11,18 @@ import com.google.common.base.MoreObjects;
 public final class Data {
     @JsonProperty("version")
     private final long version;
-    
+
     @JsonProperty("value")
-    private final byte [] value;
-    
+    private final byte[] value;
+
     @JsonCreator
     public Data(@JsonProperty("version") long version, @JsonProperty("value") byte[] value) {
         this.version = version;
         this.value = value;
+    }
+
+    public Data(byte[] value) {
+        this(value.hashCode(), value);
     }
 
     public long getVersion() {
@@ -28,13 +32,10 @@ public final class Data {
     public byte[] getValue() {
         return value;
     }
-    
+
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("version", version)
-                .add("value", value)
-                .toString();
+        return MoreObjects.toStringHelper(this).add("version", version).add("value", value).toString();
     }
 
     @Override
@@ -49,7 +50,7 @@ public final class Data {
         } else if (!(obj instanceof Data)) {
             return false;
         }
-        
+
         Data other = (Data) obj;
         return version == other.version;
     }

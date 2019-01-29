@@ -1,44 +1,17 @@
 version: '3'
 services:
-  tower-control:
-    image: "cmmdc/tower-control:0.1.0"
+  worker-node-1:
+    image: "leaderless-dm/node:0.1.0"
     ports:
       - "8080:8080"
-  worker-node-1:
-    image: "cmmdc/worker-node:0.1.0"
-    environment:
-      - tower-controll.uri=http://tower-control:8080
-      - self.uri=http://worker-node-1:8080
-      - value=102
   worker-node-2:
-    image: "cmmdc/worker-node:0.1.0"
-    environment:
-      - tower-controll.uri=http://tower-control:8080
-      - self.uri=http://worker-node-2:8080
-      - value=72
+    image: "leaderless-dm/node:0.1.0"
+    ports:
+      - "8081:8080"
   worker-node-3:
-    image: "cmmdc/worker-node:0.1.0"
-    environment:
-      - tower-controll.uri=http://tower-control:8080
-      - self.uri=http://worker-node-3:8080
-      - value=114
-  worker-node-4:
-    image: "cmmdc/worker-node:0.1.0"
-    environment:
-      - tower-controll.uri=http://tower-control:8080
-      - self.uri=http://worker-node-4:8080
-      - value=60
-  worker-node-5:
-    image: "cmmdc/worker-node:0.1.0"
-    environment:
-      - tower-controll.uri=http://tower-control:8080
-      - self.uri=http://worker-node-5:8080
-      - value=96
-  worker-node-6:
-    image: "cmmdc/worker-node:0.1.0"
-    environment:
-      - tower-controll.uri=http://tower-control:8080
-      - self.uri=http://worker-node-6:8080
-      - value=84
+    image: "leaderless-dm/node:0.1.0"
+    ports:
+      - "8082:8080"
+  
 
 
