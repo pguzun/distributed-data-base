@@ -27,8 +27,9 @@ Currently 3 nodes are exposed on ports 8080,8081,8082.
 ## How it works
 
 Client writes to all nodes at the same time async. If n/2 +1 nodes succeded the write is considered successfull.
-Clinet reads from all nodes at the same time async. If n/2 +1 nodes succeded the read is considered successfull.
-Result is obtained based on majority principle. All nodes that returned outdated results are updaded with the right alue asynchronous mode.
+
+Client reads from all nodes at the same time async. If n/2 +1 nodes succeded the read is considered successfull.
+Result is obtained based on majority principle. All nodes that returned outdated results are updaded with the right value asynchronous mode.
 
 ## some screenshots
 
