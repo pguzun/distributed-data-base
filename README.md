@@ -38,6 +38,6 @@ The node 3 is immediately updated with the right value.
 
 ![Phantom read](./results/phantom-read.png)
 
-
-
+## Literature 
+[Leaderless Replication](./docs/leaderless-replication.md)
 

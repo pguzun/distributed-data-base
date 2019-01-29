@@ -1,0 +1,36 @@
+@startuml
+
+
+ actor "User 1" as user1
+ database "Replica 1" as replica1
+ database "Replica 2" as replica2
+ database "Replica 3" as replica3 
+actor "User 2" as user2
+
+activate replica1
+activate replica2
+
+==write data id=1 version=7==
+user1 -> replica1
+user1 <-- replica1 : ok
+user1 -> replica2   
+user1 <-- replica2 : ok
+user1 -X replica3 
+
+activate replica3
+
+==read data id=1==
+user2 -> replica1 : 
+note right: 
+user2 <-- replica1 : version=7
+user2 -> replica2
+user2 <-- replica2 : version=7
+user2 -> replica3 
+user2 <-- replica3 : version=6
+
+==repair==
+user2 -> replica3 
+note right: write data\nid=1\nversion=7
+user2 <-- replica3 : ok
+
+@enduml
