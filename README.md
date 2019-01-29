@@ -15,7 +15,14 @@ university/network-algorithms/leaderless
    
    * 'docker-compose up' - to run the cluster
 
-Check the results http://{dockerip}:8080/   usually http://192.168.99.100:8080/
+At this version change in MainService.java in client module to point to your docker http://{dockerip}:808X/.
+Currently 3 nodes are exposed on ports 8080,8081,8082.
+
+```
+ private List<String> nodes = ImmutableList.of("http://192.168.99.100:8080/", "http://192.168.99.100:8081/",
+            "http://192.168.99.100:8082/");
+```
+
 
 ## How it works
 
