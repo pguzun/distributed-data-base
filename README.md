@@ -1,5 +1,5 @@
-# network-algorithms-leaderless
-university/network-algorithms/leaderless
+# leaderless
+university/leaderless
 
 ## In order to build you need to have installed
 
